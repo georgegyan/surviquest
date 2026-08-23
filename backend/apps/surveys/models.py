@@ -1,5 +1,7 @@
 from django.db import models
 from django.conf import settings
+from slugify import slugify
+import uuid
 
 # Create your models here.
 class Survey(models.Model):
@@ -22,3 +24,11 @@ class Survey(models.Model):
 
     def __str__(self):
         return self.title
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            unique_id = str(uuid.uuid4())[:8]
+
+            self.slug = slugify(f"slugify{self.title}-{unique_id}")
+
+        super(Survey, self).save(*args, **kwargs)
