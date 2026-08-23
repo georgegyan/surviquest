@@ -29,6 +29,7 @@ INSTALLED_APPS = [
     'corsheaders',
 
     'apps.accounts.apps.AccountsConfig',
+    'apps.surveys.apps.SurveysConfig',
 
     'rest_framework',
     'rest_framework_simplejwt',
