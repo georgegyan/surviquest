@@ -28,6 +28,8 @@ INSTALLED_APPS = [
 
     'corsheaders',
 
+    'apps.accounts.apps.AccountsConfig',
+
     'rest_framework',
     'rest_framework_simplejwt',
 ]
@@ -129,3 +131,5 @@ REST_FRAMEWORK = {
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     )
 }
+
+AUTH_USER_MODEL = 'accounts.User'
