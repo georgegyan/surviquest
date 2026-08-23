@@ -17,9 +17,7 @@ class SurveyListView(generics.ListAPIView):
     def get_queryset(self):
         return Survey.objects.filter(owner=self.request.user).order_by
 
-class SurveyDetailView(
-    generics.RetrieveAPIView
-):
+class SurveyDetailView(generics.RetrieveAPIView):
     serializer_class = SurveySerializer
     permission_classes = [
         IsAuthenticated
@@ -30,10 +28,18 @@ class SurveyDetailView(
             owner=self.request.user
         )
 
-class SurveyUpdateView(
-    generics.UpdateAPIView
-):
+class SurveyUpdateView(generics.UpdateAPIView):
     serializer_class = SurveySerializer
+    permission_classes = [
+        IsAuthenticated
+    ]
+
+    def get_queryset(self):
+        return Survey.objects.filter(
+            owner=self.request.user
+        )
+
+class SurveyDeleteView(generics.DestroyAPIView):
     permission_classes = [
         IsAuthenticated
     ]
