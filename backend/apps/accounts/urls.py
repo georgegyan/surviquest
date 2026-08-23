@@ -1,18 +1,8 @@
-from os import name
-
-from django.contrib import admin
-from django.urls import path, include
+from django.urls import path
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 from .views import LoginView, RegisterView, ProfileView
 
 urlpatterns = [
-    path("admin/", admin.site.urls),
-
-    path(
-        "api/auth/",
-        include("apps.accounts.urls")
-    ),
-
     path(
         "login/",
         LoginView.as_view(),

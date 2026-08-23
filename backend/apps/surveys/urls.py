@@ -1,6 +1,6 @@
 from django.urls import path
 from .views import (
-    CreateSurveyView,
+    SurveyListCreateView,
     SurveyListView,
     SurveyDetailView,
     SurveyUpdateView,
@@ -10,7 +10,7 @@ from .views import (
 urlpatterns = [
     path(
         "create/",
-        CreateSurveyView.as_view(),
+        SurveyListCreateView.as_view(),
         name="create-survey"
     ),
 
