@@ -2,7 +2,8 @@ from django.urls import path
 from .views import (
     CreateSurveyView,
     SurveyListView,
-    SurveyDetailView
+    SurveyDetailView,
+    SurveyUpdateView
 )
 
 urlpatterns = [
@@ -22,5 +23,11 @@ urlpatterns = [
     "<int:pk>/",
     SurveyDetailView.as_view(),
     name="survey-detail"
+    ),
+
+    path(
+    "<int:pk>/update/",
+    SurveyUpdateView.as_view(),
+    name="update-survey"
 ),
 ]

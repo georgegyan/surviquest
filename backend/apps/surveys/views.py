@@ -29,3 +29,16 @@ class SurveyDetailView(
         return Survey.objects.filter(
             owner=self.request.user
         )
+
+class SurveyUpdateView(
+    generics.UpdateAPIView
+):
+    serializer_class = SurveySerializer
+    permission_classes = [
+        IsAuthenticated
+    ]
+
+    def get_queryset(self):
+        return Survey.objects.filter(
+            owner=self.request.user
+        )
