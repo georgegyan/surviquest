@@ -16,3 +16,16 @@ class SurveyListView(generics.ListAPIView):
 
     def get_queryset(self):
         return Survey.objects.filter(owner=self.request.user).order_by
+
+class SurveyDetailView(
+    generics.RetrieveAPIView
+):
+    serializer_class = SurveySerializer
+    permission_classes = [
+        IsAuthenticated
+    ]
+
+    def get_queryset(self):
+        return Survey.objects.filter(
+            owner=self.request.user
+        )

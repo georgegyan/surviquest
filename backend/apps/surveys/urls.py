@@ -1,7 +1,8 @@
 from django.urls import path
 from .views import (
     CreateSurveyView,
-    SurveyListView
+    SurveyListView,
+    SurveyDetailView
 )
 
 urlpatterns = [
@@ -16,4 +17,10 @@ urlpatterns = [
         SurveyListView.as_view(),
         name="survey-list"
     ),
+
+    path(
+    "<int:pk>/",
+    SurveyDetailView.as_view(),
+    name="survey-detail"
+),
 ]
