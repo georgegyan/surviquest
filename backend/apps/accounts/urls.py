@@ -3,7 +3,7 @@ from os import name
 from django.contrib import admin
 from django.urls import path, include
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
-from .views import LoginView, RegisterView
+from .views import LoginView, RegisterView, ProfileView
 
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -22,5 +22,10 @@ urlpatterns = [
         "refresh/",
         TokenRefreshView.as_view(),
         name="refresh"
+    ),
+    path(
+        "profile/",
+        ProfileView.as_view(),
+        name="profile"
     )
 ]
