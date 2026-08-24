@@ -7,4 +7,5 @@ urlpatterns = [
     path("api/surveys/", include("apps.surveys.urls")),
     path("api/questions/", include("apps.questions.urls")),
     path("api/public/surveys/", include("apps.surveys.public_urls")),
+    path("api/public/surveys/", include("apps.responses.public_urls")),
 ]
