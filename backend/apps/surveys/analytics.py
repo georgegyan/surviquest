@@ -54,16 +54,13 @@ def get_survey_analytics(survey):
         )
 
         for answer in answers:
-
             try:
                 value = int(
                     json.loads(
                         answer.answer_text
                     )
                 )
-
                 ratings.append(value)
-
             except Exception:
                 continue
 
