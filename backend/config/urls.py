@@ -1,9 +1,10 @@
 from django.contrib import admin
-from django.urls import ( path, include )
+from django.urls import path, include 
 
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("api/auth/", include("apps.accounts.urls")),
     path("api/surveys/", include("apps.surveys.urls")),
     path("api/questions/", include("apps.questions.urls")),
+    path("api/public/surveys/", include("apps.surveys.public_urls")),
 ]
