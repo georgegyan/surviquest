@@ -7,7 +7,7 @@ from .views import (
     SurveyDeleteView,
     SurveyAnalyticsView
 )
-from .export_views import ExportSurveyCSVView
+from .export_views import ExportSurveyCSVView, ExportSurveyExcelView
 
 urlpatterns = [
     path("create/", SurveyListCreateView.as_view(), name="create-survey"),
@@ -17,4 +17,5 @@ urlpatterns = [
     path("<int:pk>/delete/", SurveyDeleteView.as_view(), name="delete-survey"),
     path("<int:pk>/analytics", SurveyAnalyticsView.as_views(), name="survey-analytics"),
     path("<int:pk>/export/csv/", ExportSurveyCSVView.as_view(), name="export-csv"),
+    path("<int:pk>/export/excel/", ExportSurveyExcelView.as_view(), name="export-excel"),
 ]
