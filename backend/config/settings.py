@@ -31,6 +31,7 @@ INSTALLED_APPS = [
     'apps.accounts.apps.AccountsConfig',
     'apps.surveys.apps.SurveysConfig',
     'apps.questions.apps.QuestionsConfig',
+    'apps.responses.apps.ResponsesConfig',
 
     'rest_framework',
     'rest_framework_simplejwt',
