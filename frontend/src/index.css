@@ -1,0 +1,58 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply border-ink-200;
+  }
+  body {
+    @apply bg-paper text-ink-800;
+  }
+  ::selection {
+    @apply bg-compass-100 text-ink-900;
+  }
+  :focus-visible {
+    outline: 2px solid #E3A23D;
+    outline-offset: 2px;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold transition-all duration-150 disabled:opacity-50 disabled:pointer-events-none;
+  }
+  .btn-primary {
+    @apply btn bg-ink-800 text-paper-50 hover:bg-ink-700 active:bg-ink-900;
+  }
+  .btn-accent {
+    @apply btn bg-compass-500 text-ink-900 hover:bg-compass-400 active:bg-compass-600;
+  }
+  .btn-ghost {
+    @apply btn bg-transparent text-ink-700 hover:bg-ink-100;
+  }
+  .btn-danger {
+    @apply btn bg-coral-500 text-paper-50 hover:bg-coral-600;
+  }
+  .card {
+    @apply bg-paper-50 border border-ink-100 rounded-2xl shadow-sm;
+  }
+  .input {
+    @apply w-full rounded-xl border border-ink-200 bg-paper-50 px-4 py-2.5 text-sm text-ink-800 placeholder:text-ink-300 focus:border-compass-500 focus:ring-1 focus:ring-compass-500 outline-none transition-colors;
+  }
+  .label {
+    @apply block text-xs font-semibold uppercase tracking-wider text-ink-400 mb-1.5;
+  }
+  .trail-path {
+    background-image: radial-gradient(circle, #A6BFBE 1.5px, transparent 1.5px);
+    background-size: 10px 10px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
