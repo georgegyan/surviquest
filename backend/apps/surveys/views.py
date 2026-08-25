@@ -15,10 +15,10 @@ class SurveyListCreateView(generics.ListCreateAPIView):
 
 class SurveyListView(generics.ListAPIView):
     serializer_class = SurveySerializer
-    permisssion_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
-        return Survey.objects.filter(owner=self.request.user).order_by
+        return Survey.objects.filter(owner=self.request.user).order_by("-created_at")
 
 class SurveyDetailView(generics.RetrieveAPIView):
     serializer_class = SurveySerializer

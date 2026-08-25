@@ -28,7 +28,7 @@ class ExportSurveyCSVView(APIView):
             for question in questions:
                 answer = (
                     survey_response.answers.filter(
-                        question=question
+                        questions=question
                     ).first())
                 row.append(
                     answer.answer_text
@@ -60,7 +60,7 @@ class ExportSurveyExcelView(APIView):
         for survey_response in (survey_responses):
             row = []
             for question in questions:
-                answer = (survey_response.answers.filter(question=question).first())
+                answer = survey_response.answers.filter(questions=question).first()
 
                 row.append(
                     answer.answer_text

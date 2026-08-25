@@ -24,6 +24,7 @@ export function formatPercent(value) {
 }
 
 export function surveyStatus(survey) {
+  if (survey?.status && survey.status !== 'published') return survey.status
   if (!survey?.expires_at) return 'live'
   const expires = new Date(survey.expires_at)
   if (Number.isNaN(expires.getTime())) return 'live'

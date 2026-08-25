@@ -96,7 +96,7 @@ class SubmitSurveyView(APIView):
 
             Answer.objects.create(
                 response=response_record,
-                question=question,
+                questions=question,
                 answer_text=json.dumps(
                     item["answer"]
                 )

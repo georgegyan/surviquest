@@ -6,11 +6,13 @@ class QuestionOptionSerializer(serializers.ModelSerializer):
         model = QuestionOption
         fields = [
             "id",
+            "question",
             "option_text",
             "order",
         ]
 
 class QuestionSerializer(serializers.ModelSerializer):
+    question_text = serializers.CharField(allow_blank=True)
     options = QuestionOptionSerializer(many=True, read_only=True)
 
     class Meta:
@@ -25,19 +27,4 @@ class QuestionSerializer(serializers.ModelSerializer):
             "settings",
             "options",
             "created_at",
-        ]
-
-class QuestionSerializer(serializers.ModelSerializer):
-    options = QuestionOptionSerializer(many=True, read_only=True)
-
-    class Meta:
-        model = Question
-        fields = [
-            "id",
-            "question_text",
-            "question_type",
-            "is_required",
-            "order",
-            "settings",
-            "options",
         ]

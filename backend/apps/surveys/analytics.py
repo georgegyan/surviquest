@@ -26,7 +26,7 @@ def get_survey_analytics(survey):
     for question in survey.questions.all():
 
         total_answers = Answer.objects.filter(
-            question=question
+            questions=question
         ).count()
 
         question_breakdown.append(
@@ -50,7 +50,7 @@ def get_survey_analytics(survey):
         ratings = []
 
         answers = Answer.objects.filter(
-            question=question
+            questions=question
         )
 
         for answer in answers:
@@ -98,7 +98,7 @@ def get_survey_analytics(survey):
         option_counts = {}
 
         answers = Answer.objects.filter(
-            question=question
+            questions=question
         )
 
         for answer in answers:

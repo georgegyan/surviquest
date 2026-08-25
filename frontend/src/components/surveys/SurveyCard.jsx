@@ -4,7 +4,7 @@ import { formatDate, surveyStatus } from '../../utils/formatters'
 
 export default function SurveyCard({ survey }) {
   const status = surveyStatus(survey)
-  const tone = status === 'expired' ? 'expired' : 'live'
+  const tone = status === 'expired' ? 'expired' : status === 'live' ? 'live' : 'draft'
 
   return (
     <Link
@@ -15,7 +15,7 @@ export default function SurveyCard({ survey }) {
         <h3 className="font-display text-lg leading-snug text-ink-800 group-hover:text-compass-600">
           {survey.title}
         </h3>
-        <Badge tone={tone}>{status === 'expired' ? 'Expired' : 'Live'}</Badge>
+        <Badge tone={tone}>{status === 'live' ? 'Live' : status.charAt(0).toUpperCase() + status.slice(1)}</Badge>
       </div>
       {survey.description && (
         <p className="line-clamp-2 text-sm text-ink-400">{survey.description}</p>

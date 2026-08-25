@@ -4,6 +4,7 @@ import { getSurvey, updateSurvey, deleteSurvey } from '../api/surveys'
 import { exportSurveyCsv, exportSurveyExcel } from '../api/exports'
 import Input from '../components/ui/Input.jsx'
 import Textarea from '../components/ui/Textarea.jsx'
+import Select from '../components/ui/Select.jsx'
 import Button from '../components/ui/Button.jsx'
 import Alert from '../components/ui/Alert.jsx'
 import Card from '../components/ui/Card.jsx'
@@ -37,6 +38,7 @@ export default function EditSurvey() {
           description: data.description || '',
           category: data.category || '',
           expires_at: data.expires_at ? data.expires_at.slice(0, 10) : '',
+          status: data.status || 'draft',
         })
       })
       .catch(() => isMounted && setError('We could not load this survey.'))
@@ -117,7 +119,9 @@ export default function EditSurvey() {
         <div>
           <div className="flex items-center gap-3">
             <p className="font-mono text-xs uppercase tracking-[0.3em] text-compass-600">Survey</p>
-            <Badge tone={status === 'expired' ? 'expired' : 'live'}>{status === 'expired' ? 'Expired' : 'Live'}</Badge>
+            <Badge tone={status === 'expired' ? 'expired' : status === 'live' ? 'live' : 'draft'}>
+              {status === 'live' ? 'Live' : status.charAt(0).toUpperCase() + status.slice(1)}
+            </Badge>
           </div>
           <h1 className="mt-1 font-display text-3xl text-ink-800">{survey.title}</h1>
         </div>
@@ -152,6 +156,11 @@ export default function EditSurvey() {
           <Input label="Title" name="title" value={form.title} onChange={handleChange} required />
           <Textarea label="Description" name="description" value={form.description} onChange={handleChange} />
           <Input label="Category" name="category" value={form.category} onChange={handleChange} />
+          <Select label="Status" name="status" value={form.status} onChange={handleChange}>
+            <option value="draft">Draft</option>
+            <option value="published">Published</option>
+            <option value="archived">Archived</option>
+          </Select>
           <Input
             label="Expires on"
             name="expires_at"
